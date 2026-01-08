@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nacho Dacal Tattoo | Portfolio & Citas</title>
+    <meta name="description" content="Estudio de tatuaje profesional. Especialistas en realismo, anime, blackwork, fineline y más. Reserva tu cita por WhatsApp.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #c5a059;
+            --gold-light: #d4af67;
+            --gold-dark: #a6853f;
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --gray: #888;
+            --gray-light: #ccc;
+            --white: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--black) !important;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-light);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(197, 160, 89, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(197, 160, 89, 0.05) 0%, transparent 50%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(197,160,89,0.03)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(197, 160, 89, 0.1);
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            display: block;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Estilos Grid */
+        .estilos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .estilo-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background: var(--black-light);
+            cursor: pointer;
+            group: true;
+        }
+
+        .estilo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: grayscale(30%);
+        }
+
+        .estilo-card:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .estilo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+        }
+
+        .estilo-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .estilo-overlay p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Piercing Section */
+        .piercing-section {
+            background: var(--black-light);
+        }
+
+        .piercing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .piercing-card {
+            background: var(--black);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .piercing-card:hover {
+            border-color: rgba(197, 160, 89, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .piercing-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: rgba(197, 160, 89, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .piercing-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .piercing-price {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .piercing-from {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Portfolio Gallery */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-tag {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(0,0,0,0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 8rem 5%;
+            background:
+                radial-gradient(ellipse at center, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            color: var(--gray);
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black-light);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .footer-section p {
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--black);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* Placeholder images */
+        .placeholder-img {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C9 2 6 4 6 8c0 3 2 5 4 6v3a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-3c2-1 4-3 4-6 0-4-3-6-6-6z"/>
+                <path d="M12 18v4"/>
+                <path d="M9 22h6"/>
+            </svg>
+            <span>NACHO DACAL</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#estilos">Estilos</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#piercing">Piercings</a></li>
+            <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+        </ul>
+        <button class="mobile-toggle" onclick="toggleMenu()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12h18M3 6h18M3 18h18"/>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+                Estudio Profesional de Tatuaje
+            </div>
+            <h1>
+                Arte en tu piel
+                <span>Sin límites</span>
+            </h1>
+            <p>Transformamos tus ideas en obras de arte únicas. Especialistas en realismo, anime, blackwork, fineline y más.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/34640943669?text=Hola!%20Quiero%20hacer%20una%20cita" class="btn btn-whatsapp" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Reservar por WhatsApp
+                </a>
+                <a href="#portfolio" class="btn btn-secondary">Ver Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estilos Section -->
+    <section id="estilos">
+        <div class="section-header">
+            <h2>Estilos de Tatuaje</h2>
+            <p>Domina cada técnica con años de experiencia y pasión por el arte</p>
+        </div>
+        <div class="estilos-grid">
+            <div class="estilo-card">
+                <img src="../imagenes/realismo.jpg" alt="Realismo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Realismo</div>
+                <div class="estilo-overlay">
+                    <h3>Realismo</h3>
+                    <p>Retratos hiperrealistas con gran detalle fotográfico</p>
+                </div>
+            </div>
+            <div class="estilo-card">
+                <img src="../imagenes/anime.jpg" alt="Anime" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Anime</div>
+                <div class="estilo-overlay">
+                    <h3>Anime</h3>
+                    <p>Personajes de anime, manga y estilo japonés</p>
+                </div>
+            </div>
+            <div class="estilo-card">
+                <img src="../imagenes/blackwork.jpg" alt="Blackwork" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Blackwork</div>
+                <div class="estilo-overlay">
+                    <h3>Blackwork</h3>
+                    <p>Diseños en tinta negra, patrones y sombreados</p>
+                </div>
+            </div>
+            <div class="estilo-card">
+                <img src="../imagenes/fineline.jpg" alt="Fineline" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Fineline</div>
+                <div class="estilo-overlay">
+                    <h3>Fineline</h3>
+                    <p>Líneas finas y delicadas, diseños minimalistas</p>
+                </div>
+            </div>
+            <div class="estilo-card">
+                <img src="../imagenes/tradicional.jpg" alt="Tradicional" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Tradicional</div>
+                <div class="estilo-overlay">
+                    <h3>Tradicional</h3>
+                    <p>Old School: líneas gruesas, colores sólidos</p>
+                </div>
+            </div>
+            <div class="estilo-card">
+                <img src="../imagenes/neotradicional.jpg" alt="Neotradicional" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Neotradicional</div>
+                <div class="estilo-overlay">
+                    <h3>Neotradicional</h3>
+                    <p>Más detalle, sombras y colores vibrantes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="section-header">
+            <h2>Portfolio</h2>
+            <p>Una selección de nuestros mejores trabajos</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="../imagenes/port_realismo_1.jpg" alt="Realismo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Realismo</div>
+                <span class="portfolio-tag">Realismo</span>
+            </div>
+            <div class="portfolio-item">
+                <img src="../imagenes/port_anime_1.jpg" alt="Anime" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Anime</div>
+                <span class="portfolio-tag">Anime</span>
+            </div>
+            <div class="portfolio-item">
+                <img src="../imagenes/port_blackwork_1.jpg" alt="Blackwork" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Blackwork</div>
+                <span class="portfolio-tag">Blackwork</span>
+            </div>
+            <div class="portfolio-item">
+                <img src="../imagenes/port_fineline_1.jpg" alt="Fineline" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Fineline</div>
+                <span class="portfolio-tag">Fineline</span>
+            </div>
+            <div class="portfolio-item">
+                <img src="../imagenes/port_tradicional_1.jpg" alt="Tradicional" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Tradicional</div>
+                <span class="portfolio-tag">Tradicional</span>
+            </div>
+            <div class="portfolio-item">
+                <img src="../imagenes/port_custom_1.jpg" alt="Custom" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="placeholder-img" style="display:none">Custom</div>
+                <span class="portfolio-tag">Custom</span>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://wa.me/34640943669?text=Hola!%20Quiero%20ver%20m%C3%A1s%20trabajos" class="btn btn-primary" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                Ver Portfolio Completo
+            </a>
+        </div>
+    </section>
+
+    <!-- Piercing Section -->
+    <section id="piercing" class="piercing-section">
+        <div class="section-header">
+            <h2>Piercings</h2>
+            <p>Plata 925, titanio y circonitas de alta calidad</p>
+        </div>
+        <div class="piercing-grid">
+            <div class="piercing-card">
+                <div class="piercing-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <h4>Industrial</h4>
+                <div class="piercing-price">30€</div>
+                <p class="piercing-from">Desde</p>
+            </div>
+            <div class="piercing-card">
+                <div class="piercing-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2C9 2 6 4 6 8c0 3 2 5 4 6"/>
+                        <path d="M12 2c3 0 6 2 6 6c0 3-2 5-4 6"/>
+                    </svg>
+                </div>
+                <h4>Labio</h4>
+                <div class="piercing-price">20€</div>
+                <p class="piercing-from">Desde</p>
+            </div>
+            <div class="piercing-card">
+                <div class="piercing-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 4v16"/>
+                        <path d="M8 8l4-4 4 4"/>
+                    </svg>
+                </div>
+                <h4>Septum</h4>
+                <div class="piercing-price">15€</div>
+                <p class="piercing-from">Desde</p>
+            </div>
+            <div class="piercing-card">
+                <div class="piercing-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="2"/>
+                        <path d="M12 10v8"/>
+                    </svg>
+                </div>
+                <h4>Ombligo</h4>
+                <div class="piercing-price">40€</div>
+                <p class="piercing-from">Desde</p>
+            </div>
+            <div class="piercing-card">
+                <div class="piercing-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <circle cx="18" cy="8" r="2"/>
+                        <circle cx="6" cy="16" r="2"/>
+                    </svg>
+                </div>
+                <h4>Topos</h4>
+                <div class="piercing-price">25€</div>
+                <p class="piercing-from">Desde</p>
+            </div>
+            <div class="piercing-card">
+                <div class="piercing-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h4>Clusters</h4>
+                <div class="piercing-price">25€</div>
+                <p class="piercing-from">Desde</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contacto">
+        <h2>¿Listo para tu próximo tatuaje?</h2>
+        <p>Escríbenos por WhatsApp y reserva tu cita hoy mismo. El bot te guiará paso a paso.</p>
+        <a href="https://wa.me/34640943669?text=Hola!%20Quiero%20hacer%20una%20cita" class="btn btn-whatsapp" target="_blank" style="font-size: 1.2rem; padding: 1.5rem 3rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Iniciar Chat en WhatsApp
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="margin-bottom: 1rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="30" height="30">
+                        <path d="M12 2C9 2 6 4 6 8c0 3 2 5 4 6v3a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-3c2-1 4-3 4-6 0-4-3-6-6-6z"/>
+                        <path d="M12 18v4"/>
+                        <path d="M9 22h6"/>
+                    </svg>
+                    <span>NACHO DACAL</span>
+                </div>
+                <p>Estudio de tatuaje profesional especializado en diversos estilos.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces</h4>
+                <p><a href="#estilos">Estilos</a></p>
+                <p><a href="#portfolio">Portfolio</a></p>
+                <p><a href="#piercing">Piercings</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p>📍 Ciudad, País</p>
+                <p>📱 +34 640 943 669</p>
+                <p>✉️ money4youbabe@gmail.com</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Tattoo Studio Pro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/34640943669?text=Hola!%20Quiero%20hacer%20una%20cita" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
